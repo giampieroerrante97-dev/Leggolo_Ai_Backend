@@ -1,13 +1,15 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS # aggiunta importante
 import requests
 from langdetect import detect
-
-app = Flask(__name__)
-
 import os
+
+app = Flask(__name__) 
+CORS(app) # abilitia richiesta dal frontend
+
+
 HF_TOKEN = os.getenv("HF_TOKEN")
 API_URL = "https://api-inference.huggingface.co/models/google/flan-t5-large"
-
 HEADERS = {"Authorization": f"Bearer {HF_TOKEN}"}
 
 @app.route("/")
@@ -36,5 +38,6 @@ if __name__ == "__main__":
     import os
     port = int(os.environ.get("PORT", 10000))  # Se Render non imposta PORT, usa 10000
     app.run(host="0.0.0.0", port=port)
+
 
 
