@@ -9,7 +9,7 @@ CORS(app) # abilitia richiesta dal frontend
 
 
 HF_TOKEN = os.getenv("HF_TOKEN")
-API_URL = "https://api-inference.huggingface.co/models/google/flan-t5-large"
+API_URL = "https://router.huggingface.co/hf-inference/models/google/flan-t5-large"
 HEADERS = {"Authorization": f"Bearer {HF_TOKEN}"}
 
 @app.route("/")
@@ -40,6 +40,7 @@ if __name__ == "__main__":
     import os
     port = int(os.environ.get("PORT", 10000))  # Se Render non imposta PORT, usa 10000
     app.run(host="0.0.0.0", port=port)
+
 
 
 
