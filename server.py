@@ -17,6 +17,7 @@ def home():
     return jsonify({"message": "Leggolo AI Backend è attivo 🚀"})
 
 @app.route("/generate", methods=["POST"])
+@app.route("/genera, methods=["POST"])
 def generate_text():
     data = request.json
     text = data.get("text", "")
@@ -25,6 +26,7 @@ def generate_text():
     return jsonify(result)
 
 @app.route("/detect-language", methods=["POST"])
+@app.route("/traduci", methods=["POST"])
 def detect_language():
     data = request.json
     text = data.get("text", "")
@@ -38,6 +40,7 @@ if __name__ == "__main__":
     import os
     port = int(os.environ.get("PORT", 10000))  # Se Render non imposta PORT, usa 10000
     app.run(host="0.0.0.0", port=port)
+
 
 
 
